@@ -9,24 +9,19 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "places")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String email;
-
-    private String password;
+    private String description;
 
     @Builder.Default
-    private boolean enabled = true;
-
-    @Builder.Default
-    private String role = "USER";
+    private double totalRating = 0.0;
 }

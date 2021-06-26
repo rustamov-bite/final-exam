@@ -6,27 +6,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "reviews")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String reviewDescription;
 
-    private String email;
-
-    private String password;
+    private double stars;
 
     @Builder.Default
-    private boolean enabled = true;
+    private LocalDate localDate = LocalDate.now();
 
-    @Builder.Default
-    private String role = "USER";
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Place place;
 }
